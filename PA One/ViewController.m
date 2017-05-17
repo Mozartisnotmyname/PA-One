@@ -787,9 +787,11 @@ int buttonClickedInFXSELECTOR = 1;
     [[KGModal sharedInstance] showWithContentView:contentView andAnimated:YES];
 }
 
+
 - (void)willShow:(NSNotification *)notification{
     NSLog(@"will show");
 }
+
 
 - (void)didShow:(NSNotification *)notification{
     NSLog(@"did show");
@@ -1006,6 +1008,7 @@ int buttonClickedInFXSELECTOR = 1;
 
     return slider;
 }
+
 
 // 按键恢复，更换图片和动画效果
 - (void)recoverDisplayByClickBtn:(UIButton*)button{
@@ -1281,6 +1284,7 @@ int buttonClickedInFXSELECTOR = 1;
     }
     
 }
+
 
 
 - (IBAction)btnTwoTapped:(UIButton *)sender {
