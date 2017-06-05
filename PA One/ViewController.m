@@ -229,21 +229,21 @@ int buttonClickedInFXSELECTOR = 1;
 @property (weak, nonatomic) IBOutlet UIButton *btnSOLOInViewThreeDetail;
 
 
-//viewOne,viewOneDetail中的一些变量
+//viewOne,viewOneDetail中的一些Outlet
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewInViewOne;
 @property (weak, nonatomic) IBOutlet UIView *sliderInViewOneDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderOneInViewOneDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderTwoInViewOneDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderThreeInViewOneDetail;
 
-//viewTwo,viewTwoDetail中的一些变量
+//viewTwo,viewTwoDetail中的一些Outlet
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewInViewTwo;
 @property (weak, nonatomic) IBOutlet UIView *sliderInViewTwoDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderOneInViewTwoDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderTwoInViewTwoDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderThreeInViewTwoDetail;
 
-//viewThree,viewThreeDetail中的一些变量
+//viewThree,viewThreeDetail中的一些Outlet
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewInViewThree;
 @property (weak, nonatomic) IBOutlet UIView *sliderInViewThreeDetail;
 @property (weak, nonatomic) IBOutlet UIView *sliderOneInViewThreeDetail;
@@ -714,19 +714,19 @@ int buttonClickedInFXSELECTOR = 1;
     
     //imageViewInViewFiveDetail Click Respond
     self.imageViewSMALLInViewFourDetail.userInteractionEnabled=YES;
-    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewFlat)];
+    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewSMALL)];
     [self.imageViewSMALLInViewFourDetail addGestureRecognizer:singleTap];
     
     self.imageViewMIDInViewFourDetail.userInteractionEnabled=YES;
-    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewDJ)];
+    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewMID)];
     [self.imageViewMIDInViewFourDetail addGestureRecognizer:singleTap];
     
     self.imageViewLARGEInViewFourDetail.userInteractionEnabled=YES;
-    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewSolo)];
+    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewLARGE)];
     [self.imageViewLARGEInViewFourDetail addGestureRecognizer:singleTap];
     
     self.imageViewKARAOKEInViewFourDetail.userInteractionEnabled=YES;
-    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewVoice)];
+    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImageViewKARAOKE)];
     [self.imageViewKARAOKEInViewFourDetail addGestureRecognizer:singleTap];
     
     
@@ -734,7 +734,6 @@ int buttonClickedInFXSELECTOR = 1;
     // BT Serial Port
     self.btSerialPort = [[BTSerialPort alloc] init];
     self.btSerialPort.delegate = self;
-    
 }
 
 
@@ -839,7 +838,7 @@ int buttonClickedInFXSELECTOR = 1;
     NSLog(@"slider end changing value = %f", slider.upperValue);
 }
 
-#pragma mark - Self tool function
+#pragma mark - Slider设置
 - (void)setImageForSlider:(UISlider*)slider{
     
     [slider setThumbImage:[UIImage imageNamed:@"drawable_seekbar_thumb_normal.png"] forState:UIControlStateNormal];
@@ -1010,121 +1009,6 @@ int buttonClickedInFXSELECTOR = 1;
 }
 
 
-// 按键恢复，更换图片和动画效果
-- (void)recoverDisplayByClickBtn:(UIButton*)button{
-    
-    if (button == self.btnVerticalInViewOne){
-        NSLog(@"button1按下");
-    }
-    
-    if (button == self.btnVerticalInViewTwo){
-         NSLog(@"button2按下");
-    }
-    
-    if (button == self.btnVerticalInViewThree){
-         NSLog(@"button3按下");
-    }
-    
-    if (button == self.btnVerticalInViewFour){
-         NSLog(@"button4按下");
-    }
-    
-    if (button == self.btnVerticalInViewFive){
-         NSLog(@"button5按下");
-    }
-
-   
-    if (button == self.btnVerticalInViewFive){
-        self.btnVerticalInViewFive.hidden = YES;
-        self.btnInViewFive.hidden = NO;
-        
-        if (self.displayStatus == NoFold){
-            CGAffineTransform myTransform = CGAffineTransformMakeTranslation(0, 0);
-            [self.viewFour setTransform:myTransform];
-            [self.view bringSubviewToFront:self.viewFour];
-            
-            myTransform = CGAffineTransformMakeTranslation(0, 0);
-            [self.viewThree setTransform:myTransform];
-            [self.view bringSubviewToFront:self.viewThree];
-            
-            myTransform = CGAffineTransformMakeTranslation(0, 0);
-            [self.viewTwo setTransform:myTransform];
-            [self.view bringSubviewToFront:self.viewTwo];
-            
-            myTransform = CGAffineTransformMakeTranslation(0, 0);
-            [self.viewOne setTransform:myTransform];
-            [self.view bringSubviewToFront:self.viewOne];
-            
-            CATransition *transition = [CATransition animation];
-            transition.duration = 0.2f;
-            transition.type =   kCATransitionReveal;
-            transition.subtype = kCATransitionFromLeft;
-            [self.viewFiveDetail.layer addAnimation:transition forKey:nil];
-            [self.view  addSubview:self.viewFiveDetail];
-            [self.view bringSubviewToFront:self.viewFiveDetail];
-            [self.view bringSubviewToFront:self.viewFive];
-            [self.viewFiveDetail sendSubviewToBack:self.viewFiveDetail];
-            self.viewFiveDetail.hidden = YES;
-            
-        }else{
-            
-            CATransition *transition = [CATransition animation];
-            transition.duration = 0.3f;
-            transition.type =   kCATransitionReveal;
-            transition.subtype = kCATransitionFromLeft;
-            [self.viewFiveDetail.layer addAnimation:transition forKey:nil];
-            [self.view  addSubview:self.viewFiveDetail];
-            [self.view bringSubviewToFront:self.viewFiveDetail];
-            [self.view bringSubviewToFront:self.viewFive];
-            [self.viewFiveDetail sendSubviewToBack:self.viewFiveDetail];
-            self.viewFiveDetail.hidden = YES;
-        }
-    
-    }else{
-        self.btnVerticalInViewOne.hidden = YES;
-        self.btnInViewOne.hidden = NO;
-        
-        self.btnVerticalInViewTwo.hidden = YES;
-        self.btnInViewTwo.hidden = NO;
-        
-        self.btnVerticalInViewThree.hidden = YES;
-        self.btnInViewThree.hidden = NO;
-        
-        self.btnVerticalInViewFour.hidden = YES;
-        self.btnInViewFour.hidden = NO;
-    
-        
-        [UIView animateWithDuration:self.animationTime animations:^{
-            
-            self.viewOne.frame = self.viewOneOriginalFrame;
-            self.viewTwo.frame = self.viewTwoOriginalFrame;
-            self.viewThree.frame = self.viewThreeOriginalFrame;
-            self.viewFour.frame = self.viewFourOriginalFrame;
- 
-        } completion:^(BOOL finished) {
-            if (finished) {
-                self.viewOne.layer.shadowColor = [UIColor clearColor].CGColor;
-                self.viewOne.layer.shadowOffset = CGSizeMake(2, 0);
-                self.viewOne.layer.shadowOpacity = 1.0;
-                
-                self.viewTwo.layer.shadowColor = [UIColor clearColor].CGColor;
-                self.viewTwo.layer.shadowOffset = CGSizeMake(2, 0);
-                self.viewTwo.layer.shadowOpacity = 1.0;
-                
-                self.viewThree.layer.shadowColor = [UIColor clearColor].CGColor;
-                self.viewThree.layer.shadowOffset = CGSizeMake(2, 0);
-                self.viewThree.layer.shadowOpacity = 1.0;
-                
-                self.viewFour.layer.shadowColor = [UIColor clearColor].CGColor;
-                self.viewFour.layer.shadowOffset = CGSizeMake(2, 0);
-                self.viewFour.layer.shadowOpacity = 1.0;
-                
-            }
-            
-        }];
-    }
-    
-}
 
 -(void)sliderOneInit
 {
@@ -1222,6 +1106,8 @@ int buttonClickedInFXSELECTOR = 1;
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - view detail button
 - (IBAction)btnOneTapped:(UIButton *)sender {
     
     if (self.displayStatus == NoFold) {
@@ -1549,6 +1435,126 @@ int buttonClickedInFXSELECTOR = 1;
 
 }
 
+
+// 按键恢复，更换图片和动画效果
+- (void)recoverDisplayByClickBtn:(UIButton*)button{
+    
+    if (button == self.btnVerticalInViewOne){
+        NSLog(@"button1按下");
+    }
+    
+    if (button == self.btnVerticalInViewTwo){
+        NSLog(@"button2按下");
+    }
+    
+    if (button == self.btnVerticalInViewThree){
+        NSLog(@"button3按下");
+    }
+    
+    if (button == self.btnVerticalInViewFour){
+        NSLog(@"button4按下");
+    }
+    
+    if (button == self.btnVerticalInViewFive){
+        NSLog(@"button5按下");
+    }
+    
+    
+    if (button == self.btnVerticalInViewFive){
+        self.btnVerticalInViewFive.hidden = YES;
+        self.btnInViewFive.hidden = NO;
+        
+        if (self.displayStatus == NoFold){
+            CGAffineTransform myTransform = CGAffineTransformMakeTranslation(0, 0);
+            [self.viewFour setTransform:myTransform];
+            [self.view bringSubviewToFront:self.viewFour];
+            
+            myTransform = CGAffineTransformMakeTranslation(0, 0);
+            [self.viewThree setTransform:myTransform];
+            [self.view bringSubviewToFront:self.viewThree];
+            
+            myTransform = CGAffineTransformMakeTranslation(0, 0);
+            [self.viewTwo setTransform:myTransform];
+            [self.view bringSubviewToFront:self.viewTwo];
+            
+            myTransform = CGAffineTransformMakeTranslation(0, 0);
+            [self.viewOne setTransform:myTransform];
+            [self.view bringSubviewToFront:self.viewOne];
+            
+            CATransition *transition = [CATransition animation];
+            transition.duration = 0.2f;
+            transition.type =   kCATransitionReveal;
+            transition.subtype = kCATransitionFromLeft;
+            [self.viewFiveDetail.layer addAnimation:transition forKey:nil];
+            [self.view  addSubview:self.viewFiveDetail];
+            [self.view bringSubviewToFront:self.viewFiveDetail];
+            [self.view bringSubviewToFront:self.viewFive];
+            [self.viewFiveDetail sendSubviewToBack:self.viewFiveDetail];
+            self.viewFiveDetail.hidden = YES;
+            
+        }else{
+            
+            CATransition *transition = [CATransition animation];
+            transition.duration = 0.3f;
+            transition.type =   kCATransitionReveal;
+            transition.subtype = kCATransitionFromLeft;
+            [self.viewFiveDetail.layer addAnimation:transition forKey:nil];
+            [self.view  addSubview:self.viewFiveDetail];
+            [self.view bringSubviewToFront:self.viewFiveDetail];
+            [self.view bringSubviewToFront:self.viewFive];
+            [self.viewFiveDetail sendSubviewToBack:self.viewFiveDetail];
+            self.viewFiveDetail.hidden = YES;
+        }
+        
+    }else{
+        self.btnVerticalInViewOne.hidden = YES;
+        self.btnInViewOne.hidden = NO;
+        
+        self.btnVerticalInViewTwo.hidden = YES;
+        self.btnInViewTwo.hidden = NO;
+        
+        self.btnVerticalInViewThree.hidden = YES;
+        self.btnInViewThree.hidden = NO;
+        
+        self.btnVerticalInViewFour.hidden = YES;
+        self.btnInViewFour.hidden = NO;
+        
+        
+        [UIView animateWithDuration:self.animationTime animations:^{
+            
+            self.viewOne.frame = self.viewOneOriginalFrame;
+            self.viewTwo.frame = self.viewTwoOriginalFrame;
+            self.viewThree.frame = self.viewThreeOriginalFrame;
+            self.viewFour.frame = self.viewFourOriginalFrame;
+            
+        } completion:^(BOOL finished) {
+            if (finished) {
+                self.viewOne.layer.shadowColor = [UIColor clearColor].CGColor;
+                self.viewOne.layer.shadowOffset = CGSizeMake(2, 0);
+                self.viewOne.layer.shadowOpacity = 1.0;
+                
+                self.viewTwo.layer.shadowColor = [UIColor clearColor].CGColor;
+                self.viewTwo.layer.shadowOffset = CGSizeMake(2, 0);
+                self.viewTwo.layer.shadowOpacity = 1.0;
+                
+                self.viewThree.layer.shadowColor = [UIColor clearColor].CGColor;
+                self.viewThree.layer.shadowOffset = CGSizeMake(2, 0);
+                self.viewThree.layer.shadowOpacity = 1.0;
+                
+                self.viewFour.layer.shadowColor = [UIColor clearColor].CGColor;
+                self.viewFour.layer.shadowOffset = CGSizeMake(2, 0);
+                self.viewFour.layer.shadowOpacity = 1.0;
+                
+            }
+            
+        }];
+    }
+    
+}
+
+
+
+#pragma mark - Substitute和SOLO按键
 - (IBAction)btnFourSubstituteInViewOneDetail:(id)sender {
     
     /*
@@ -2781,6 +2787,7 @@ int buttonClickedInFXSELECTOR = 1;
 }
 
 
+#pragma mark - 不同channel左右切换
 - (IBAction)btnLeftInViewOneDetail:(id)sender {
     
     self.displayStatus = FromBtnFour;               
@@ -3293,6 +3300,7 @@ int buttonClickedInFXSELECTOR = 1;
 
 }
 
+#pragma mark - VOICE MODE Dialog中的按键响应
 -(void) btnMALEVOCALInVOICEMODEInDialogClicked
 {
     buttonClickedInVOICEMODE = 1;
@@ -4271,196 +4279,8 @@ int buttonClickedInFXSELECTOR = 1;
     [contentView addSubview:btnDELAY];
 }
 
-/*
-- (IBAction)btnFunctionSelectInDialogTapped:(id)sender {
-    
-    //BrightRoom按键
-    if (sender == self.btnBrightRoomInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnBrightRoomInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-         [self.btnBrightRoomInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnBrightRoomInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnBrightRoomInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //WarmLounge按键
-    if (sender == self.btnWarmLoungeInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnWarmLoungeInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnWarmLoungeInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnWarmLoungeInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnWarmLoungeInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
 
-    //SmallStage按键
-    if (sender == self.btnSmallStageInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnSmallStageInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnSmallStageInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnSmallStageInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnSmallStageInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //WarmThrater按键
-    if (sender == self.btnWarmThraterInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnWarmThraterInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnWarmThraterInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnWarmThraterInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnWarmThraterInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //WarmHall按键
-    if (sender == self.btnWarmHallInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnWarmHallInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnWarmHallInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnWarmHallInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnWarmHallInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //ConnectHall按键
-    if (sender == self.btnConnectHallInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnConnectHallInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnConnectHallInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnConnectHallInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnConnectHallInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //PlateReverb按键
-    if (sender == self.btnPlateReverbInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnPlateReverbInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnPlateReverbInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnPlateReverbInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnPlateReverbInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //Cathedral按键
-    if (sender == self.btnCathedralInViewFour){
-        labelInViewFourDetailDisplayStatus = 0;
-        [self.btnCathedralInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnCathedralInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnCathedralInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnCathedralInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //Chorus按键
-    if (sender == self.btnChorusInViewFour){
-        labelInViewFourDetailDisplayStatus = 1;
-        [self.btnChorusInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnChorusInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnChorusInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnChorusInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //ChorusEverb按键
-    if (sender == self.btnChorusEverbInViewFour){
-        labelInViewFourDetailDisplayStatus = 1;
-        [self.btnChorusEverbInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnChorusEverbInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnChorusEverbInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnChorusEverbInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //Doubler按键
-    if (sender == self.btnDoublerInViewFour){
-        labelInViewFourDetailDisplayStatus = 2;
-        [self.btnDoublerInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDoublerInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnDoublerInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDoublerInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //TapeSlap按键
-    if (sender == self.btnTapeSlapInViewFour){
-        labelInViewFourDetailDisplayStatus = 2;
-        [self.btnTapeSlapInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnTapeSlapInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnTapeSlapInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnTapeSlapInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //Delay1按键
-    if (sender == self.btnDelay1InViewFour){
-        labelInViewFourDetailDisplayStatus = 2;
-        [self.btnDelay1InViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDelay1InViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnDelay1InViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDelay1InViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //Delay2按键
-    if (sender == self.btnDelay2InViewFour){
-        labelInViewFourDetailDisplayStatus = 2;
-        [self.btnDelay2InViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDelay2InViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnDelay2InViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDelay2InViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-
-    //Delay3按键
-    if (sender == self.btnDelay3InViewFour){
-        labelInViewFourDetailDisplayStatus = 2;
-        [self.btnDelay3InViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDelay3InViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnDelay3InViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnDelay3InViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    
-    //ReverbDelay按键
-    if (sender == self.btnReverbDelayInViewFour){
-        labelInViewFourDetailDisplayStatus = 2;
-        [self.btnReverbDelayInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_green_button.9.png"] forState:UIControlStateNormal];
-        [self.btnReverbDelayInViewFour setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else{
-        [self.btnReverbDelayInViewFour setBackgroundImage:[UIImage imageNamed:@"drawable_white_button.9.png"] forState:UIControlStateNormal];
-        [self.btnReverbDelayInViewFour setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-
-
-    switch (labelInViewFourDetailDisplayStatus) {
-        case 0:
-            self.labelInViewFourDetail.text = @"Reverb";
-            self.labelInViewFourDetail.textColor = [UIColor blackColor];
-            self.labelInViewFourDetail.font = [UIFont fontWithName:@ "Arial-BoldMT"  size:(24.0)];
-            break;
-        
-        case 1:
-            self.labelInViewFourDetail.text = @"Chorus";
-            self.labelInViewFourDetail.textColor = [UIColor blackColor];
-            self.labelInViewFourDetail.font = [UIFont fontWithName:@ "Arial-BoldMT"  size:(24.0)];
-            break;
-        
-        case 2:
-            self.labelInViewFourDetail.text = @"Delay";
-            self.labelInViewFourDetail.textColor = [UIColor blackColor];
-            self.labelInViewFourDetail.font = [UIFont fontWithName:@ "Arial-BoldMT"  size:(24.0)];
-            break;
-            
-        default:
-            break;
-    }
-    
-}
-*/
-
+#pragma mark - segment响应
 //segment点击响应
 - (IBAction)segmentTapped:(id)sender {
     
@@ -4524,9 +4344,11 @@ int buttonClickedInFXSELECTOR = 1;
 - (IBAction)btnThreeUpInViewFiveDetailTapped:(id)sender {
 }
 
--(void)onClickImageViewFlat{
+
+#pragma mark - KARAOKE Mode
+-(void)onClickImageViewSMALL{
     
-    NSLog(@"ImageViewFlat被点击!");
+    NSLog(@"ImageViewSMALL被点击!");
     
     
     [self.imageViewSMALLInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_01_lit"]];
@@ -4538,9 +4360,9 @@ int buttonClickedInFXSELECTOR = 1;
     [self.imageViewKARAOKEInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_04"]];
 }
 
--(void)onClickImageViewDJ{
+-(void)onClickImageViewMID{
     
-    NSLog(@"ImageViewDJ图片被点击!");
+    NSLog(@"ImageViewMID图片被点击!");
     
     [self.imageViewSMALLInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_01"]];
     
@@ -4551,9 +4373,9 @@ int buttonClickedInFXSELECTOR = 1;
     [self.imageViewKARAOKEInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_04"]];
 }
 
--(void)onClickImageViewSolo{
+-(void)onClickImageViewLARGE{
     
-    NSLog(@"ImageViewSolo图片被点击!");
+    NSLog(@"ImageViewLARGE图片被点击!");
 
     [self.imageViewSMALLInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_01"]];
     
@@ -4564,9 +4386,9 @@ int buttonClickedInFXSELECTOR = 1;
     [self.imageViewKARAOKEInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_04"]];
 }
 
--(void)onClickImageViewVoice{
+-(void)onClickImageViewKARAOKE{
     
-    NSLog(@"ImageViewVoice图片被点击!");
+    NSLog(@"ImageViewKARAOKE图片被点击!");
     
     [self.imageViewSMALLInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_01"]];
     
@@ -4577,6 +4399,7 @@ int buttonClickedInFXSELECTOR = 1;
     [self.imageViewKARAOKEInViewFourDetail setImage:[UIImage imageNamed:@"drawable_master_fx_04_lit"]];
 }
 
+#pragma mark - Mute按键响应
 - (IBAction)btnMuteInViewOneTapped:(id)sender {
     
     if (btnMuteInViewOneStatusFlag == false){
@@ -4584,18 +4407,18 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewOneStatusFlag = true;
         self.btnMuteInViewOne.hidden = YES;
         self.btnMuteInViewOnePress.hidden = NO;
-        //[self performSelectorInBackground:@selector(threadFunc) withObject:nil];
-        timerOne = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionOne) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] run];
+
+//        timerOne = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionOne) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] run];
 
     }else{
         [self.btSerialPort sendCmdStr:MUTE_OFF_CMD];
         btnMuteInViewOneStatusFlag = false;
         self.btnMuteInViewOne.hidden = NO;
         self.btnMuteInViewOnePress.hidden = YES;
-        [timerOne invalidate];
-        timerOne = nil;
-        [self.imageViewInViewOne setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
+//        [timerOne invalidate];
+//        timerOne = nil;
+//        [self.imageViewInViewOne setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewOne setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
         
     }
@@ -4612,8 +4435,8 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewTwoStatusFlag = true;
         self.btnMuteInViewTwo.hidden = YES;
         self.btnMuteInViewTwoPress.hidden = NO;
-        timerTwo = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionTwo) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] run];
+//        timerTwo = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionTwo) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] run];
         
     }else{
         
@@ -4621,9 +4444,9 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewTwoStatusFlag = false;
         self.btnMuteInViewTwo.hidden = NO;
         self.btnMuteInViewTwoPress.hidden = YES;
-        [timerTwo invalidate];
-        timerTwo = nil;
-        [self.imageViewInViewTwo setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
+//        [timerTwo invalidate];
+//        timerTwo = nil;
+//        [self.imageViewInViewTwo setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewTwo setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
     }
 
@@ -4637,8 +4460,8 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewThreeStatusFlag = true;
         self.btnMuteInViewThree.hidden = YES;
         self.btnMuteInViewThreePress.hidden = NO;
-        timerThree = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionThree) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] run];
+//        timerThree = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionThree) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] run];
 
     }else{
         
@@ -4646,9 +4469,9 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewThreeStatusFlag = false;
         self.btnMuteInViewThree.hidden = NO;
         self.btnMuteInViewThreePress.hidden = YES;
-        [timerThree invalidate];
-        timerThree = nil;
-        [self.imageViewInViewThree setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
+//        [timerThree invalidate];
+//        timerThree = nil;
+//        [self.imageViewInViewThree setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewThree setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
         
     }
@@ -4663,17 +4486,17 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewFourStatusFlag = true;
         self.btnMuteInViewFour.hidden = YES;
         self.btnMuteInViewFourPress.hidden = NO;
-        timerFour = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionFour) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] run];
+//        timerFour = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionFour) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] run];
     }else{
         
         [self.btSerialPort sendCmdStr:MUTE_OFF_CMD];
         btnMuteInViewFourStatusFlag = false;
         self.btnMuteInViewFour.hidden = NO;
         self.btnMuteInViewFourPress.hidden = YES;
-        [timerFour invalidate];
-        timerFour = nil;
-        [self.imageViewInViewFour setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
+//        [timerFour invalidate];
+//        timerFour = nil;
+//        [self.imageViewInViewFour setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewFour setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
     }
 
@@ -4688,8 +4511,8 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewFiveStatusFlag = true;
         self.btnMuteInViewFive.hidden = YES;
         self.btnMuteInViewFivePress.hidden = NO;
-        timerFive = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionFive) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] run];
+//        timerFive = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionFive) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] run];
     }else{
         
         [self.btSerialPort sendCmdStr:MUTE_OFF_CMD];
@@ -4697,9 +4520,9 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewFiveStatusFlag = false;
         self.btnMuteInViewFive.hidden = NO;
         self.btnMuteInViewFivePress.hidden = YES;
-        [timerFive invalidate];
-        timerFive = nil;
-        [self.imageViewInViewFive setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
+//        [timerFive invalidate];
+//        timerFive = nil;
+//        [self.imageViewInViewFive setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewFive setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
     }
 
@@ -4826,11 +4649,9 @@ int buttonClickedInFXSELECTOR = 1;
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [myWebView loadRequest:req];
     [self.view addSubview:myWebView];
-
-    
 }
 
-
+#pragma mark - 电平灯timeAction
 -(void)timeActionOne
 {
    
@@ -5036,8 +4857,7 @@ int buttonClickedInFXSELECTOR = 1;
         }];
         [alert addAction:defaultAction];
         
-        [self presentViewController:alert animated:YES completion:nil];
-        
+        [self presentViewController:alert animated:YES completion:nil];        
     }
 }
 
