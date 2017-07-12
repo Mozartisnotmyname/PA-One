@@ -1619,7 +1619,7 @@ BOOST</string>
                                     <constraint firstAttribute="trailing" secondItem="GIP-D1-sCc" secondAttribute="trailing" id="dl3-cG-OVI"/>
                                     <constraint firstItem="GIP-D1-sCc" firstAttribute="top" secondItem="eYw-gC-NFN" secondAttribute="bottom" constant="10" id="hlW-TB-8BU"/>
                                     <constraint firstItem="Ygq-ji-xc9" firstAttribute="top" secondItem="r3f-lu-Bb5" secondAttribute="top" constant="15" id="lzs-oV-4GX"/>
-                                    <constraint firstAttribute="bottom" secondItem="6Z3-G5-uzR" secondAttribute="bottom" constant="5" id="o8Z-p2-sRj"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Z3-G5-uzR" secondAttribute="bottom" constant="15" id="o8Z-p2-sRj"/>
                                     <constraint firstItem="WNO-YT-JFG" firstAttribute="top" secondItem="r3f-lu-Bb5" secondAttribute="top" constant="15" id="oJc-Ys-nno"/>
                                     <constraint firstAttribute="bottom" secondItem="PjU-XF-SNN" secondAttribute="bottom" id="rSw-RH-Jca"/>
                                     <constraint firstItem="6Z3-G5-uzR" firstAttribute="top" secondItem="GIP-D1-sCc" secondAttribute="bottom" constant="13" id="sGr-vO-LyS"/>
@@ -1672,7 +1672,7 @@ BOOST</string>
                                         <color key="highlightedColor" red="0.65098039215686276" green="0.65098039215686276" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawable_seekbar_scale" translatesAutoresizingMaskIntoConstraints="NO" id="klS-JK-IgO">
-                                        <rect key="frame" x="13" y="74" width="94" height="285"/>
+                                        <rect key="frame" x="13" y="74" width="94" height="282"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJg-i6-g9e">
                                         <rect key="frame" x="13" y="15" width="94" height="35"/>
@@ -1705,12 +1705,12 @@ BOOST</string>
                                     <constraint firstAttribute="bottom" secondItem="Dkt-0d-dOu" secondAttribute="bottom" id="4Sm-Yb-bXL"/>
                                     <constraint firstItem="Dkt-0d-dOu" firstAttribute="top" secondItem="nxO-yH-T7i" secondAttribute="top" id="5jW-36-isT"/>
                                     <constraint firstItem="eQ3-mZ-Z6p" firstAttribute="leading" secondItem="nxO-yH-T7i" secondAttribute="leading" constant="13" id="7pX-2L-MBW"/>
-                                    <constraint firstItem="FX7-JU-XhA" firstAttribute="top" secondItem="klS-JK-IgO" secondAttribute="bottom" constant="5" id="9V6-ke-gba"/>
+                                    <constraint firstItem="FX7-JU-XhA" firstAttribute="top" secondItem="klS-JK-IgO" secondAttribute="bottom" constant="8" id="9V6-ke-gba"/>
                                     <constraint firstItem="uFU-Jc-xiP" firstAttribute="top" secondItem="rJg-i6-g9e" secondAttribute="bottom" constant="4" id="AL7-gH-c7p"/>
                                     <constraint firstItem="uFU-Jc-xiP" firstAttribute="top" secondItem="eQ3-mZ-Z6p" secondAttribute="bottom" constant="4" id="D2m-gx-eor"/>
                                     <constraint firstItem="Dkt-0d-dOu" firstAttribute="leading" secondItem="rJg-i6-g9e" secondAttribute="trailing" constant="12" id="DF3-RT-ujB"/>
                                     <constraint firstItem="FX7-JU-XhA" firstAttribute="leading" secondItem="nxO-yH-T7i" secondAttribute="leading" constant="13" id="Fan-2w-O9Y"/>
-                                    <constraint firstItem="ocW-Qz-Ji8" firstAttribute="top" secondItem="klS-JK-IgO" secondAttribute="bottom" constant="5" id="FgD-KB-xMJ"/>
+                                    <constraint firstItem="ocW-Qz-Ji8" firstAttribute="top" secondItem="klS-JK-IgO" secondAttribute="bottom" constant="8" id="FgD-KB-xMJ"/>
                                     <constraint firstItem="klS-JK-IgO" firstAttribute="top" secondItem="uFU-Jc-xiP" secondAttribute="bottom" id="G6t-Pu-gov"/>
                                     <constraint firstItem="rJg-i6-g9e" firstAttribute="top" secondItem="nxO-yH-T7i" secondAttribute="top" constant="15" id="MFU-m3-LMf"/>
                                     <constraint firstItem="klS-JK-IgO" firstAttribute="leading" secondItem="nxO-yH-T7i" secondAttribute="leading" constant="13" id="OaF-cg-Byi"/>
@@ -1743,7 +1743,7 @@ BOOST</string>
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawable_seekbar_scale" translatesAutoresizingMaskIntoConstraints="NO" id="udC-Yd-4eG">
-                                        <rect key="frame" x="13" y="74" width="94" height="285"/>
+                                        <rect key="frame" x="13" y="74" width="94" height="282"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC7-OM-PUI">
                                         <rect key="frame" x="13" y="54" width="94" height="20"/>
@@ -1813,13 +1813,13 @@ BOOST</string>
                                     <constraint firstAttribute="trailing" secondItem="kOe-75-vii" secondAttribute="trailing" constant="13" id="WFs-5q-VXB"/>
                                     <constraint firstItem="udC-Yd-4eG" firstAttribute="top" secondItem="MC7-OM-PUI" secondAttribute="bottom" id="XzG-GN-2Rj"/>
                                     <constraint firstAttribute="trailing" secondItem="GUr-aY-Ccb" secondAttribute="trailing" id="ZCr-1g-yJZ"/>
-                                    <constraint firstItem="HF8-sT-52h" firstAttribute="top" secondItem="udC-Yd-4eG" secondAttribute="bottom" constant="5" id="ZqN-8c-3n5"/>
+                                    <constraint firstItem="HF8-sT-52h" firstAttribute="top" secondItem="udC-Yd-4eG" secondAttribute="bottom" constant="8" id="ZqN-8c-3n5"/>
                                     <constraint firstItem="GUr-aY-Ccb" firstAttribute="leading" secondItem="wlE-kO-Nde" secondAttribute="trailing" constant="12" id="Zw6-UY-Peq"/>
                                     <constraint firstItem="GUr-aY-Ccb" firstAttribute="top" secondItem="C9v-58-6tm" secondAttribute="top" id="ewE-mf-Slo"/>
                                     <constraint firstItem="kOe-75-vii" firstAttribute="leading" secondItem="C9v-58-6tm" secondAttribute="leading" constant="13" id="f9U-48-7RD"/>
                                     <constraint firstItem="GUr-aY-Ccb" firstAttribute="leading" secondItem="HF8-sT-52h" secondAttribute="trailing" constant="12" id="fDM-uB-A8O"/>
                                     <constraint firstItem="wlE-kO-Nde" firstAttribute="leading" secondItem="C9v-58-6tm" secondAttribute="leading" constant="13" id="fPi-L0-6Cd"/>
-                                    <constraint firstItem="kOe-75-vii" firstAttribute="top" secondItem="udC-Yd-4eG" secondAttribute="bottom" constant="5" id="foT-vd-xPa"/>
+                                    <constraint firstItem="kOe-75-vii" firstAttribute="top" secondItem="udC-Yd-4eG" secondAttribute="bottom" constant="8" id="foT-vd-xPa"/>
                                     <constraint firstAttribute="bottom" secondItem="kOe-75-vii" secondAttribute="bottom" constant="15" id="ito-pb-uB6"/>
                                     <constraint firstAttribute="bottom" secondItem="HF8-sT-52h" secondAttribute="bottom" constant="15" id="ncc-zo-884"/>
                                     <constraint firstItem="MC7-OM-PUI" firstAttribute="leading" secondItem="C9v-58-6tm" secondAttribute="leading" constant="13" id="pdG-5l-Lar"/>
@@ -1852,7 +1852,7 @@ BOOST</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawable_seekbar_scale" translatesAutoresizingMaskIntoConstraints="NO" id="1xS-fb-IrO">
-                                        <rect key="frame" x="13" y="74" width="94" height="285"/>
+                                        <rect key="frame" x="13" y="74" width="94" height="282"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8J-ji-rOh" userLabel="Btn In View Two">
                                         <rect key="frame" x="13" y="364" width="94" height="35"/>
@@ -1900,7 +1900,7 @@ BOOST</string>
                                 <color key="backgroundColor" red="0.65098039215686276" green="0.65098039215686276" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="5ci-Bm-aAm" secondAttribute="trailing" constant="13" id="6Q0-UV-GwZ"/>
-                                    <constraint firstItem="b8J-ji-rOh" firstAttribute="top" secondItem="1xS-fb-IrO" secondAttribute="bottom" constant="5" id="8s5-8H-2pP"/>
+                                    <constraint firstItem="b8J-ji-rOh" firstAttribute="top" secondItem="1xS-fb-IrO" secondAttribute="bottom" constant="8" id="8s5-8H-2pP"/>
                                     <constraint firstAttribute="bottom" secondItem="6yf-gQ-M14" secondAttribute="bottom" constant="15" id="EAF-2x-nm9"/>
                                     <constraint firstAttribute="bottom" secondItem="w6S-bv-yon" secondAttribute="bottom" id="EoN-eh-s0V"/>
                                     <constraint firstItem="b8J-ji-rOh" firstAttribute="leading" secondItem="yT6-gQ-duQ" secondAttribute="leading" constant="13" id="FvE-1U-S6a"/>
@@ -1914,7 +1914,7 @@ BOOST</string>
                                     <constraint firstAttribute="trailing" secondItem="1xS-fb-IrO" secondAttribute="trailing" constant="13" id="Ttr-sc-hQC"/>
                                     <constraint firstItem="w6S-bv-yon" firstAttribute="leading" secondItem="djG-be-ucz" secondAttribute="trailing" constant="12" id="ZVg-Wr-7ED"/>
                                     <constraint firstItem="5ci-Bm-aAm" firstAttribute="top" secondItem="QjW-gK-Q5a" secondAttribute="bottom" constant="4" id="Zws-7O-akM"/>
-                                    <constraint firstItem="6yf-gQ-M14" firstAttribute="top" secondItem="1xS-fb-IrO" secondAttribute="bottom" constant="5" id="aoX-bw-eXc"/>
+                                    <constraint firstItem="6yf-gQ-M14" firstAttribute="top" secondItem="1xS-fb-IrO" secondAttribute="bottom" constant="8" id="aoX-bw-eXc"/>
                                     <constraint firstItem="w6S-bv-yon" firstAttribute="leading" secondItem="QjW-gK-Q5a" secondAttribute="trailing" constant="12" id="d4K-Rq-7YZ"/>
                                     <constraint firstItem="1xS-fb-IrO" firstAttribute="top" secondItem="5ci-Bm-aAm" secondAttribute="bottom" id="dxy-gz-sHX"/>
                                     <constraint firstAttribute="width" constant="120" id="e5e-3O-0lG"/>
@@ -1951,7 +1951,7 @@ BOOST</string>
                                         <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawable_seekbar_scale" translatesAutoresizingMaskIntoConstraints="NO" id="ScT-yg-Oby">
-                                        <rect key="frame" x="13" y="74" width="94" height="285"/>
+                                        <rect key="frame" x="13" y="74" width="94" height="282"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ4-AD-ToQ" userLabel="Btn In View One">
                                         <rect key="frame" x="13" y="364" width="94" height="35"/>
@@ -2009,7 +2009,7 @@ BOOST</string>
                                     <constraint firstItem="ri4-DL-NJ8" firstAttribute="leading" secondItem="o8V-Za-2af" secondAttribute="leading" constant="13" id="Ttv-yn-4ci"/>
                                     <constraint firstItem="4ku-O0-arb" firstAttribute="leading" secondItem="o8V-Za-2af" secondAttribute="leading" constant="13" id="Wqz-Vi-bcm"/>
                                     <constraint firstAttribute="bottom" secondItem="Ze4-ZM-8jR" secondAttribute="bottom" constant="15" id="asd-gs-Vc2"/>
-                                    <constraint firstItem="MZ4-AD-ToQ" firstAttribute="top" secondItem="ScT-yg-Oby" secondAttribute="bottom" constant="5" id="dm3-93-UML"/>
+                                    <constraint firstItem="MZ4-AD-ToQ" firstAttribute="top" secondItem="ScT-yg-Oby" secondAttribute="bottom" constant="8" id="dm3-93-UML"/>
                                     <constraint firstItem="cV6-re-abA" firstAttribute="leading" secondItem="MZ4-AD-ToQ" secondAttribute="trailing" constant="12" id="dpc-HA-rUZ"/>
                                     <constraint firstAttribute="trailing" secondItem="cV6-re-abA" secondAttribute="trailing" id="eHE-Zz-3oB"/>
                                     <constraint firstItem="cV6-re-abA" firstAttribute="leading" secondItem="bRS-lt-6HZ" secondAttribute="trailing" constant="12" id="eaf-6Y-enu"/>
@@ -2023,7 +2023,7 @@ BOOST</string>
                                     <constraint firstItem="4ku-O0-arb" firstAttribute="top" secondItem="o8V-Za-2af" secondAttribute="top" constant="15" id="rVJ-k6-sGR"/>
                                     <constraint firstItem="ScT-yg-Oby" firstAttribute="leading" secondItem="o8V-Za-2af" secondAttribute="leading" constant="13" id="ts8-BM-X8U"/>
                                     <constraint firstAttribute="bottom" secondItem="cV6-re-abA" secondAttribute="bottom" id="uyX-kw-TNw"/>
-                                    <constraint firstItem="Ze4-ZM-8jR" firstAttribute="top" secondItem="ScT-yg-Oby" secondAttribute="bottom" constant="5" id="vcY-T6-J5s"/>
+                                    <constraint firstItem="Ze4-ZM-8jR" firstAttribute="top" secondItem="ScT-yg-Oby" secondAttribute="bottom" constant="8" id="vcY-T6-J5s"/>
                                     <constraint firstItem="ri4-DL-NJ8" firstAttribute="top" secondItem="bRS-lt-6HZ" secondAttribute="bottom" constant="4" id="wLh-uy-c1H"/>
                                 </constraints>
                             </view>
@@ -2031,7 +2031,7 @@ BOOST</string>
                                 <rect key="frame" x="480" y="0.0" width="120" height="414"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawable_seekbar_scale" translatesAutoresizingMaskIntoConstraints="NO" id="zmt-Ss-IMG">
-                                        <rect key="frame" x="13" y="74" width="94" height="285"/>
+                                        <rect key="frame" x="13" y="74" width="94" height="282"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dy7-nb-6FA">
                                         <rect key="frame" x="13" y="54" width="94" height="20"/>
@@ -2105,9 +2105,9 @@ BOOST</string>
                                     <constraint firstAttribute="trailing" secondItem="bfh-Be-2Ft" secondAttribute="trailing" constant="13" id="ZX1-Oa-KhK"/>
                                     <constraint firstItem="dy7-nb-6FA" firstAttribute="top" secondItem="uTe-Ds-1xe" secondAttribute="bottom" constant="4" id="aqF-Za-gud"/>
                                     <constraint firstItem="zmt-Ss-IMG" firstAttribute="top" secondItem="dy7-nb-6FA" secondAttribute="bottom" id="dEu-Lg-FZc"/>
-                                    <constraint firstItem="zRQ-IN-Nnw" firstAttribute="top" secondItem="zmt-Ss-IMG" secondAttribute="bottom" constant="5" id="f1w-7v-pb9"/>
+                                    <constraint firstItem="zRQ-IN-Nnw" firstAttribute="top" secondItem="zmt-Ss-IMG" secondAttribute="bottom" constant="8" id="f1w-7v-pb9"/>
                                     <constraint firstAttribute="trailing" secondItem="zmt-Ss-IMG" secondAttribute="trailing" constant="13" id="fbT-jS-s8U"/>
-                                    <constraint firstItem="NGZ-t1-hN4" firstAttribute="top" secondItem="zmt-Ss-IMG" secondAttribute="bottom" constant="5" id="i7c-w6-hts"/>
+                                    <constraint firstItem="NGZ-t1-hN4" firstAttribute="top" secondItem="zmt-Ss-IMG" secondAttribute="bottom" constant="8" id="i7c-w6-hts"/>
                                     <constraint firstAttribute="trailing" secondItem="dy7-nb-6FA" secondAttribute="trailing" constant="13" id="jf3-Kk-WzE"/>
                                     <constraint firstAttribute="trailing" secondItem="NGZ-t1-hN4" secondAttribute="trailing" constant="13" id="rT2-cj-VD0"/>
                                     <constraint firstItem="uTe-Ds-1xe" firstAttribute="leading" secondItem="d7O-Je-XkN" secondAttribute="leading" constant="13" id="ras-6f-pcw"/>
@@ -2285,7 +2285,7 @@ BOOST</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-355" y="48"/>
+            <point key="canvasLocation" x="-355.43478260869568" y="47.826086956521742"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "NMRangeSlider.h"
 #import "KGModal.h"
+#import "BleDataFormat.h"
 
 typedef enum: NSInteger{
     NoFold = 1,
@@ -52,6 +53,13 @@ UIView *imageViewCannotChooseViewInViewThree;
 UIView *sliderOneCannotChooseInViewThreeDetail;
 UIView *sliderTwoCannotChooseInViewThreeDetail;
 UIView *sliderThreeCannotChooseInViewThreeDetail;
+
+//Reverb 不可选部分
+UIView *imageViewCannotChooseViewInViewFour;
+
+//Main 不可选部分
+UIView *imageViewCannotChooseViewInViewFive;
+
 
 
 NSUInteger r;
@@ -347,6 +355,7 @@ int buttonClickedInFXSELECTOR = 1;
 @synthesize interval;
 @synthesize averageWidth;
 
+BleDataFormat* bleDataFormat = nil;
 
 #pragma mark - Life cycle
 - (void)viewDidLoad {
@@ -371,19 +380,19 @@ int buttonClickedInFXSELECTOR = 1;
     self.widthForViewFive.constant = averageWidth;
     
     //viewOneDetail界面约束根据屏幕heigh调整
-    self.heightForReverbSendOneInViewOneDetail.constant = (height - 93) * 0.94 / 4.5;
-    self.heightForReverbSendThreeInViewOneDetail.constant = (height - 93) * 3 / 4.5;
-    self.heightForHightInViewOneDetail.constant =self.heightForReverbSendThreeInViewOneDetail.constant / 5;
+    self.heightForReverbSendOneInViewOneDetail.constant = (height - 93) * 0.8 / 4.5;
+    self.heightForReverbSendThreeInViewOneDetail.constant = (height - 93) * 3.5 / 4.5;
+    self.heightForHightInViewOneDetail.constant =self.heightForReverbSendThreeInViewOneDetail.constant / 6;
     
     //viewTwoDetail界面约束根据屏幕heigh调整
-    self.heightForReverbSendOneInViewTwoDetail.constant = (height - 93) * 0.94 / 4.5;
-    self.heightForReverbSendThreeInViewTwoDetail.constant = (height - 93) * 3 / 4.5;
-    self.heightForHightInViewTwoDetail.constant =self.heightForReverbSendThreeInViewTwoDetail.constant / 5;
+    self.heightForReverbSendOneInViewTwoDetail.constant = (height - 93) * 0.8 / 4.5;
+    self.heightForReverbSendThreeInViewTwoDetail.constant = (height - 93) * 3.5 / 4.5;
+    self.heightForHightInViewTwoDetail.constant =self.heightForReverbSendThreeInViewTwoDetail.constant / 6;
     
     //viewThreeDetail界面约束根据屏幕heigh调整
-    self.heightForReverbSendOneInViewThreeDetail.constant = (height - 93) * 0.94 / 4.5;
-    self.heightForReverbSendThreeInViewThreeDetail.constant = (height - 93) * 3 / 4.5;
-    self.heightForHightInViewThreeDetail.constant =self.heightForReverbSendThreeInViewTwoDetail.constant / 5;
+    self.heightForReverbSendOneInViewThreeDetail.constant = (height - 93) * 0.8 / 4.5;
+    self.heightForReverbSendThreeInViewThreeDetail.constant = (height - 93) * 3.5 / 4.5;
+    self.heightForHightInViewThreeDetail.constant =self.heightForReverbSendThreeInViewTwoDetail.constant / 6;
 
 
     //设置ViewFiveDetail中的segment的宽度和高度
@@ -734,6 +743,13 @@ int buttonClickedInFXSELECTOR = 1;
     // BT Serial Port
     self.btSerialPort = [[BTSerialPort alloc] init];
     self.btSerialPort.delegate = self;
+    
+    
+    bleDataFormat = [[BleDataFormat alloc] init];
+    //测试
+//    NSString *myNSString = @"This is a test code block";
+//    const char *myChar = [myNSString cStringUsingEncoding: [NSString defaultCStringEncoding]];
+//    NSLog(@"字符：%x", myChar[2]);
 }
 
 
@@ -2801,14 +2817,16 @@ int buttonClickedInFXSELECTOR = 1;
     //左按键viewxxxDetail切换动画效果
     CATransition *transition = [CATransition animation];
     transition.duration = 0.2f;
-    transition.type =  kCATransitionReveal;
+//    transition.type =  kCATransitionReveal;
+    transition.type = kCATransitionMoveIn;
     transition.subtype = kCATransitionFromRight;
     [self.viewThreeDetail.layer addAnimation:transition forKey:nil];
     [self.view  addSubview:self.viewThreeDetail];
     [self.view bringSubviewToFront:self.viewThreeDetail];
     
     transition.duration = 0.2f;
-    transition.type =  kCATransitionPush;
+//    transition.type =  kCATransitionPush;
+    transition.type = kCATransitionMoveIn;
     transition.subtype = kCATransitionFromRight;
     [self.viewFourDetail.layer addAnimation:transition forKey:nil];
     [self.view  addSubview:self.viewFourDetail];
@@ -4402,12 +4420,22 @@ int buttonClickedInFXSELECTOR = 1;
 #pragma mark - Mute按键响应
 - (IBAction)btnMuteInViewOneTapped:(id)sender {
     
+    
+    
     if (btnMuteInViewOneStatusFlag == false){
         [self.btSerialPort sendCmdStr:MUTE_ON_CMD];
         btnMuteInViewOneStatusFlag = true;
         self.btnMuteInViewOne.hidden = YES;
         self.btnMuteInViewOnePress.hidden = NO;
 
+        
+        //image不可选
+        CGRect btnMuteCannotChooseRect = CGRectMake(self.imageViewInViewOne.frame.origin.x, self.imageViewInViewOne.frame.origin.y, self.imageViewInViewOne.frame.size.width, self.imageViewInViewOne.frame.size.height);
+        imageViewCannotChooseViewInViewOne = [[UIView alloc] initWithFrame:btnMuteCannotChooseRect];
+        imageViewCannotChooseViewInViewOne.backgroundColor = [UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.4f];
+        [self.viewOne addSubview:imageViewCannotChooseViewInViewOne];
+        
+        imageViewCannotChooseViewInViewOne.hidden = NO;
 //        timerOne = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionOne) userInfo:nil repeats:YES];
 //        [[NSRunLoop currentRunLoop] run];
 
@@ -4419,8 +4447,8 @@ int buttonClickedInFXSELECTOR = 1;
 //        [timerOne invalidate];
 //        timerOne = nil;
 //        [self.imageViewInViewOne setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
-        [self.btnMuteInViewOne setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
-        
+//        [self.btnMuteInViewOne setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
+        imageViewCannotChooseViewInViewOne.hidden = YES;
     }
     
     
@@ -4435,6 +4463,14 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewTwoStatusFlag = true;
         self.btnMuteInViewTwo.hidden = YES;
         self.btnMuteInViewTwoPress.hidden = NO;
+        
+        //image不可选
+        CGRect btnMuteCannotChooseRect = CGRectMake(self.imageViewInViewTwo.frame.origin.x, self.imageViewInViewTwo.frame.origin.y, self.imageViewInViewTwo.frame.size.width, self.imageViewInViewTwo.frame.size.height);
+        imageViewCannotChooseViewInViewTwo = [[UIView alloc] initWithFrame:btnMuteCannotChooseRect];
+        imageViewCannotChooseViewInViewTwo.backgroundColor = [UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.4f];
+        [self.viewTwo addSubview:imageViewCannotChooseViewInViewTwo];
+        
+        imageViewCannotChooseViewInViewTwo.hidden = NO;
 //        timerTwo = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionTwo) userInfo:nil repeats:YES];
 //        [[NSRunLoop currentRunLoop] run];
         
@@ -4448,6 +4484,7 @@ int buttonClickedInFXSELECTOR = 1;
 //        timerTwo = nil;
 //        [self.imageViewInViewTwo setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewTwo setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
+        imageViewCannotChooseViewInViewTwo.hidden = YES;
     }
 
 }
@@ -4460,6 +4497,14 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewThreeStatusFlag = true;
         self.btnMuteInViewThree.hidden = YES;
         self.btnMuteInViewThreePress.hidden = NO;
+        
+        //image不可选
+        CGRect btnMuteCannotChooseRect = CGRectMake(self.imageViewInViewThree.frame.origin.x, self.imageViewInViewThree.frame.origin.y, self.imageViewInViewThree.frame.size.width, self.imageViewInViewThree.frame.size.height);
+        imageViewCannotChooseViewInViewThree = [[UIView alloc] initWithFrame:btnMuteCannotChooseRect];
+        imageViewCannotChooseViewInViewThree.backgroundColor = [UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.4f];
+        [self.viewThree addSubview:imageViewCannotChooseViewInViewThree];
+        
+        imageViewCannotChooseViewInViewThree.hidden = NO;
 //        timerThree = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionThree) userInfo:nil repeats:YES];
 //        [[NSRunLoop currentRunLoop] run];
 
@@ -4474,6 +4519,7 @@ int buttonClickedInFXSELECTOR = 1;
 //        [self.imageViewInViewThree setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewThree setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
         
+        imageViewCannotChooseViewInViewThree.hidden = YES;
     }
 
 }
@@ -4486,6 +4532,14 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewFourStatusFlag = true;
         self.btnMuteInViewFour.hidden = YES;
         self.btnMuteInViewFourPress.hidden = NO;
+        
+        //image不可选
+        CGRect btnMuteCannotChooseRect = CGRectMake(self.imageViewInViewFour.frame.origin.x, self.imageViewInViewFour.frame.origin.y, self.imageViewInViewFour.frame.size.width, self.imageViewInViewFour.frame.size.height);
+        imageViewCannotChooseViewInViewFour = [[UIView alloc] initWithFrame:btnMuteCannotChooseRect];
+        imageViewCannotChooseViewInViewFour.backgroundColor = [UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.4f];
+        [self.viewFour addSubview:imageViewCannotChooseViewInViewFour];
+        
+        imageViewCannotChooseViewInViewFour.hidden = NO;
 //        timerFour = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionFour) userInfo:nil repeats:YES];
 //        [[NSRunLoop currentRunLoop] run];
     }else{
@@ -4498,6 +4552,8 @@ int buttonClickedInFXSELECTOR = 1;
 //        timerFour = nil;
 //        [self.imageViewInViewFour setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewFour setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
+        
+        imageViewCannotChooseViewInViewFour.hidden = YES;
     }
 
 }
@@ -4511,6 +4567,14 @@ int buttonClickedInFXSELECTOR = 1;
         btnMuteInViewFiveStatusFlag = true;
         self.btnMuteInViewFive.hidden = YES;
         self.btnMuteInViewFivePress.hidden = NO;
+        
+        //image不可选
+        CGRect btnMuteCannotChooseRect = CGRectMake(self.imageViewInViewFive.frame.origin.x, self.imageViewInViewFive.frame.origin.y, self.imageViewInViewFive.frame.size.width, self.imageViewInViewFive.frame.size.height);
+        imageViewCannotChooseViewInViewFive = [[UIView alloc] initWithFrame:btnMuteCannotChooseRect];
+        imageViewCannotChooseViewInViewFive.backgroundColor = [UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.4f];
+        [self.viewFive addSubview:imageViewCannotChooseViewInViewFive];
+        
+        imageViewCannotChooseViewInViewFive.hidden = NO;
 //        timerFive = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeActionFive) userInfo:nil repeats:YES];
 //        [[NSRunLoop currentRunLoop] run];
     }else{
@@ -4524,6 +4588,8 @@ int buttonClickedInFXSELECTOR = 1;
 //        timerFive = nil;
 //        [self.imageViewInViewFive setImage:[UIImage imageNamed:@"drawable_seekbar_scale"]];
         [self.btnMuteInViewFive setBackgroundImage:[UIImage imageNamed: @"drawable_white_button.9"] forState:UIControlStateHighlighted];
+        
+         imageViewCannotChooseViewInViewFive.hidden = YES;
     }
 
 }
@@ -4861,11 +4927,26 @@ int buttonClickedInFXSELECTOR = 1;
     }
 }
 
-- (void)receiveStr:(NSString *)str {
+
+- (void)receiveCmdStr:(NSString *)str {
     
     NSLog(@"Received %@ from BTSerialPort", str);
+    const char *receiveBuffTemp = [str cStringUsingEncoding: [NSString defaultCStringEncoding]];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < str.length; i++)
+    {
+        array[i] = [NSNumber numberWithChar:receiveBuffTemp[i]];
+    }
     
+    BOOL result = [bleDataFormat checkSum:array];
+    if (result) {
+        
+    }
+    
+
+    NSLog(@"收到的数据：%s", receiveBuffTemp);
 }
+
 
 - (IBAction)btnLIMITERInFeedbackInViewFiveDetailTapped:(id)sender{
 

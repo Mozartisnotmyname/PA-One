@@ -42,6 +42,7 @@
 		288F3C051D45ACAA00107A09 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F3BEA1D45ACAA00107A09 /* NMRangeSlider.m */; };
 		28AC80421D533F19000166A2 /* BTSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AC80411D533F19000166A2 /* BTSerialPort.m */; };
 		84F97D641D93E29B00916EBF /* KGModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F97D631D93E29B00916EBF /* KGModal.m */; };
+		A7F1731E1F0B71E500325B21 /* BleDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F1731D1F0B71E500325B21 /* BleDataFormat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,8 @@
 		28AC80411D533F19000166A2 /* BTSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSerialPort.m; sourceTree = "<group>"; };
 		84F97D621D93E29B00916EBF /* KGModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGModal.h; sourceTree = "<group>"; };
 		84F97D631D93E29B00916EBF /* KGModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGModal.m; sourceTree = "<group>"; };
+		A7F1731C1F0B71E500325B21 /* BleDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleDataFormat.h; sourceTree = "<group>"; };
+		A7F1731D1F0B71E500325B21 /* BleDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleDataFormat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 		288C3CC61D213EF200FF1B66 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A7F1731C1F0B71E500325B21 /* BleDataFormat.h */,
+				A7F1731D1F0B71E500325B21 /* BleDataFormat.m */,
 				288C3CC71D213EF200FF1B66 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -261,6 +266,7 @@
 					288C3CC21D213EF200FF1B66 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = PGE57W8HKE;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -331,6 +337,7 @@
 				28AC80421D533F19000166A2 /* BTSerialPort.m in Sources */,
 				84F97D641D93E29B00916EBF /* KGModal.m in Sources */,
 				288C3CCB1D213EF200FF1B66 /* AppDelegate.m in Sources */,
+				A7F1731E1F0B71E500325B21 /* BleDataFormat.m in Sources */,
 				288C3CC81D213EF200FF1B66 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -432,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -453,6 +460,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kef.PA-One";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -471,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kef.PA-One";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

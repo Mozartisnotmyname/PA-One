@@ -126,6 +126,7 @@
     return strTemp;
 }
 
+#pragma mark - send
 - (void)sendCmdStr:(NSString *)cmd {
     
     if (self.transferCh) {
@@ -136,6 +137,9 @@
                                type:CBCharacteristicWriteWithoutResponse];
     }
 }
+
+
+
 #pragma mark - CBCentralManagerDelegate
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     
@@ -245,10 +249,10 @@
     NSLog(@"Peripheral didUpdateValue... %@", characteristic.value);
     
     if (self.delegate != nil
-        && [self.delegate respondsToSelector:@selector(receiveStr:)]) {
+        && [self.delegate respondsToSelector:@selector(receiveCmdStr:)]) {
         
         NSString* str = [self ConvertToNSString:characteristic.value];
-        [self.delegate performSelector:@selector(receiveStr:) withObject:str];
+        [self.delegate performSelector:@selector(receiveCmdStr:) withObject:str];
     }
 }
 @end
